@@ -33,8 +33,8 @@
 #' binary (0 = no, 1 = yes) responses to questions which may be predictive of
 #' the test result, but any numeric or factor covariates can be used.
 #' @param link the character-valued name of the link function for binomial
-#' regression.  Choices are "\code{logit}" (default), "\code{cloglog}" or
-#' "\code{probit}".
+#' regression.  Choices are \dQuote{\code{logit}} (default), \dQuote{\code{cloglog}} or
+#' \dQuote{\code{probit}}.
 #' @param Nfolds an integer number of folds used for \emph{k}-fold cross
 #' validation (default = 20).
 #' @param ... additional arguments passsed to or from other \code{stats::glm}
@@ -43,15 +43,17 @@
 #' @return An object of class binomscreenr containing the elements:
 #' \describe{
 #' \item{\code{Call}}{The function call.}
-#' \item{\code{ModelFit}}{An object of class "glm" (See \code{\link{glm}}) containing the results of the model fit.}
+#' \item{\code{ModelFit}}{An object of class \dQuote{glm} (See \code{\link{glm}}) containing the results of the model fit.}
 #' \item{\code{Prevalence}}{Prevalence of the test condition in the training sample.}
 #' \item{\code{ParamEst}}{A vector containing the binomial regression parameter estimates.}
-#' \item{\code{ISroc}}{A list of class "roc" (see \code{\link{roc}}) containing in-sample (overly optimistic) results.}
+#' \item{\code{ISroc}}{A list of class \dQuote{roc} (see \code{\link{roc}}) containing in-sample (overly optimistic) results.}
 #' \item{\code{CVpreds}}{A data frame containing \emph{k}-fold cross-validation results.}
-#' \item{\code{CVroc}}{A list of class "roc" (See \code{\link{roc}}) containing cross-validated results.}
+#' \item{\code{CVroc}}{A list of class \dQuote{roc} (See \code{\link{roc}}) containing cross-validated results.}
 #' }
 #'
-#' @seealso \code{\link{glm}}
+#' @seealso
+#' \code{\link[stats]{glm}}
+#' \code{\link[pROC]{roc}}
 #'
 #' @examples
 #' ## Evaluate the performance of screening thresholds based on a logisitc model
@@ -62,7 +64,7 @@
 #'                              data = unicorns, link = "logit")
 #' summary(unitool)
 #' plot(unitool)
-#' testCounts(unitool)
+#' \dontrun{testCounts(unitool)}
 #'
 #' ## Example implementation of screening based on those results
 #' ## Suppose there are new observations (excluding testing) from two previously
@@ -80,8 +82,8 @@
 #' predict(unitool$ModelFit, newdata = new, type = "response")
 #'
 #' ## If p.threshold = 0.025 is chosen as the screening threshold
-#' ## (sensitivity and specificity 77\% and 69\%, respectively) then "Bernie P."
-#' ## would be offered testing and "Alice D." would not.
+#' ## (sensitivity and specificity 77\% and 69\%, respectively) then \dQuote{Bernie P.}
+#' ## would be offered testing and \dQuote{Alice D.} would not.
 #'
 #' ## In practice, the computation of the probabilities of positive test results
 #' ## among newly observed individuals might be coded outside of R using, say, a
@@ -144,7 +146,7 @@ binomialScreening <- function(formula,
 #'
 #' @param object an object of class \code{binomscreenr} produced by function
 #' \code{binomialScreening}.
-#' @param diagnostics a logical value; plot model diagnostics if \code{TRUE}.
+#' @param diagnostics a logical value; plot model diagnostics if \verb{TRUE}.
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @return Nothing.  Summaries are printed as a side effect.
@@ -173,7 +175,7 @@ summary.binomscreenr <- function(object, diagnostics = FALSE, ...){
 #' intevals on specificity (gray shaded region), along with the overly optimistic
 #' in-sample ROC curve.
 #'
-#' @param x an object of class "binomscreenr".
+#' @param x an object of class \dQuote{binomscreenr}.
 #' @param ... additional arguments passed to \code{\link{plot.roc}} and friends.
 #'
 #' @return Nothing.  This function produces a plot as a side effect.
@@ -212,6 +214,8 @@ plot.binomscreenr <- function(x, ...){
 #'
 #' @return Nothing. Thresholds, specificities and sensitivities are printed as a
 #' side effect.
+#'
+#' @seealso \code{\link[pROC]{plot.roc}}
 #'
 #' @references
 #' Fawcett T. An introduction to ROC analysis. Pattern Recognition Letters. 2006.

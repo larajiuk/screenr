@@ -46,7 +46,8 @@ sens_spec <- function(x){
 #' predictor
 #'
 #'
-#' @param link Character link function (one of "logit", "cloglog" or "probit")
+#' @param link Character link function (one of \dQuote{logit}, \dQuote{cloglog} or
+#' \dQuote{probit})
 #' @param lp Numeric linear predictor
 #'
 #' @return The inverse of the link function for the linear predictor.
@@ -66,13 +67,13 @@ inverseLink <- function(link, lp){
 }
 
 
-#' Extract ROCs from "binomscreenr" or "simplescreenr" Objects
+#' Extract ROCs from \dquote{binomscreenr} or \dQuote{simplescreenr} Objects
 #'
 #' Extract the receiver operating characteristics from an object of class
-#' "simplescreenr" or "binomscreenr".  This is a convenience function to enable
+#' \dQuote{binomscreenr} or \dQuote{simplescreenr}.  This is a convenience function to enable
 #' easy use and export of the ROC.
 #'
-#' @param x An object of class "binomscreenr" or "simplescreenr".
+#' @param x An object of class \dQuote{binomscreenr} or \dQuote{simplescreenr}.
 #'
 #' @return A data frame containing the threshold scores, sensitivity and
 #' specificity.
@@ -96,7 +97,7 @@ inverseLink <- function(link, lp){
 #' data(unicorns)
 #' unitool <- binomialScreening(testresult ~ Q1 + Q2 + Q3 + Q4 + Q5,
 #'                              data = unicorns, Nfolds = 20)
-#' (uniROC <- getROC(unitool))
+#' \dontrun{(uniROC <- getROC(unitool))}
 #'
 #' @export
 getROC <- function(x){
@@ -122,11 +123,11 @@ getROC <- function(x){
 #' to identify the first positive test result, and the expected number of
 #' false positives among that number of tests.
 #'
-#' @param x A data frame containing columns "sensitivity" and
-#' "specificity", or an object of class 'simplescreenr' or 'binomscreenr'.
+#' @param x A data frame containing columns dQuote{sensitivity} and
+#' \dQuote{specificity}, or an object of class \dQuote{binomscreenr} or \dQuote{simplescreenr}.
 #' @param prev Numeric proportion of the population expressing positive test
-#' results.  \code{prev} is optional for class 'simplescreenr' and
-#' 'binomscreenr' objects, and defaults to prevalence in the training sample
+#' results.  \code{prev} is optional for class \dQuote{binomscreenr} and
+#'  \dQuote{simplescreenr} objects, and defaults to prevalence in the training sample
 #' if not specified.
 #'
 #' @return A data frame containing sensitivity, specificity, the expected

@@ -30,15 +30,15 @@
 #' @param formula an object of class \code{\link{formula}}  defining the testing
 #' outcome and predictor covariates, which is passed to \code{lme4::glmer()}.
 #' @param id a vector (variable) which identifies the sampling clusters.
-#' @param data  the "training" sample; a data frame containing the testing
+#' @param data  the training sample; a data frame containing the testing
 #' outcome and predictive covariates to be used for testing screening.  The
 #' testing outcome must be binary (0,1) indicating negative and positive test
 #' results, respectively, or logical (TRUE/FALSE).  The covariates are typically
 #' binary (0 = no, 1 = yes) responses to questions which may be predictive of
 #' the test result, but any numeric or factor covariates can be used.
 #' @param link the character-valued name of the link function for binomial
-#' regression.  Choices are "\code{logit}" (default), "\code{cloglog}" or
-#' "\code{probit}".
+#' regression.  Choices are \dQuote{\code{logit}} (default), \dQuote{\code{cloglog}} or
+#' \dQuote{\code{probit}}.
 #' @param Nfolds an integer number of folds used for \emph{k}-fold cross
 #' validation (default = 20).
 #' @param ... additional arguments passsed to \code{lme4::glmer}.
@@ -56,7 +56,9 @@
 #' specificities.}
 #' }
 #'
-#' @seealso \code{\link{glmer}}
+#' @seealso
+#' \code{\link[lme4]{glmer}}
+#' \code{\link[pROC]{roc}}
 #'
 #' @examples
 #' ## Evaluate the performance of screening thresholds based on a mixed-effect
@@ -68,7 +70,7 @@
 #'                              data = unicorns, link = "logit")
 #' summary(unitool)
 #' plot(unitool)
-#' testCounts(unitool)
+#' \dontrun{testCounts(unitool)}
 #'
 #' ## Example implementation of screening based on those results
 #' ## Suppose there are new observations (excluding testing) from two previously
@@ -89,8 +91,8 @@
 #' ## or, more simply,
 #' predict(unitool$ModelFit, newdata = new, type = "response")
 #' ## If, for example, \code{p} = 0.025 is chosen as the screening threshold
-#' ## (sensitivity and specificity 77\% and 69\%, respectively) then "Bernie P."
-#' ## would be offered testing and "Alice D." would not.
+#' ## (sensitivity and specificity 77\% and 69\%, respectively) then \dQuote{Bernie P.}
+#' ## would be offered testing and \dQuote{Alice D.} would not.
 #'
 #' ## In practice, the computation of the probabilities of positive test results
 #' ## among newly observed individuals might be coded outside of R using, say, a

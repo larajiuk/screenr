@@ -28,14 +28,14 @@
 #'
 #' @param formula an object of class \code{\link{formula}} defining the testing
 #' outcome and predictor covariates.
-#' @param data the "training" sample; a data frame containing the testing outcome
+#' @param data the training sample; a data frame containing the testing outcome
 #' and predictive covariates to be used for testing screening.  The testing
 #' outcome must be binary (0,1) indicating negative and positive test results,
 #' respectively, or logical (TRUE/FALSE).  The covariates are typically binary
 #' (0 = no, 1 = yes) responses to questions, but the responses may also be
 #' ordinal numeric values.
 #'
-#' @return An object of class "simplescreenr" containing the elements:
+#' @return An object of class \dQuote{simplescreenr} containing the elements:
 #' \describe{
 #' \item{\code{Call}}{The function call.}
 #' \item{\code{Prevalence}}{Prevalence of the test condition in the training sample.}
@@ -55,7 +55,7 @@
 #'                        data = unicorns)
 #' summary(simple)
 #' plot(simple)
-#' testCounts(simple)
+#' \dontrun{testCounts(simple)}
 #'
 #' @export
 simpleScreening <- function(formula, data){
@@ -148,6 +148,8 @@ plot.simplescreenr <- function(x, ...){
 #'
 #' @return Nothing. Thresholds, specificities and sensitivities are printed as a
 #' side effect.
+#'
+#' @seealso \code{\link[pROC]{plot.roc}}
 #'
 #' @references
 #' Fawcett T. An introduction to ROC analysis. Pattern Recognition Letters. 2006.

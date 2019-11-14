@@ -3,7 +3,7 @@
 #' A preliminary study was conducted in which a random sample of 5,000 properly
 #' consented unicorns were recruited from 20 clinics.  Each unicorn was asked
 #' five questions about their behavior and health.  Unicorns responded by
-#' stomping a hoof once to indicate "no", and twice to indicate "yes".  A
+#' stomping a hoof once to indicate \dQuote{no}, and twice to indicate \dQuote{yes}.  A
 #' sample of venous blood was drawn from each, and was subsequently tested
 #' for the presence of antibodies to Unicorn Immunodeficiency Virus (UIV) using
 #' a standard assay algorithm.
